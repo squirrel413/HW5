@@ -12,9 +12,7 @@ public class Patron implements Comparable<Patron> {
         this.coolness = coolness;
     }
 
-    public int compareTo(Patron patron){
-        return this.coolness - patron.coolness;
-    }
+    public int compareTo(Patron patron){return this.coolness - patron.coolness;}
 
     public String getName(){return this.name;}
 
@@ -27,5 +25,4 @@ public class Patron implements Comparable<Patron> {
     public void setRegular(boolean regular){this.regular = regular;}
 
     public void setCoolness(int coolness){this.coolness = coolness;}
-
 }
