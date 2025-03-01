@@ -4,6 +4,8 @@ public class Patron implements Comparable<Patron> {
     private boolean regular;
     private int coolness;
 
+    public Patron(){}
+
     public Patron(String name, boolean regular, int coolness) {
         this.name = name;
         this.regular = regular;
@@ -14,14 +16,16 @@ public class Patron implements Comparable<Patron> {
         return this.coolness - patron.coolness;
     }
 
-    private String getName(){return this.name;}
+    public String getName(){return this.name;}
 
-    private boolean getRegular(){return this.regular;}
+    public boolean getRegular(){return this.regular;}
 
-    private int getCoolness(){return this.coolness;}
+    public int getCoolness(){return this.coolness;}
 
-    private void setRegular(boolean regular){this.regular = regular;}
+    public void setName(String name){this.name = name;}
 
-    private void setCoolness(int coolness){this.coolness = coolness;}
+    public void setRegular(boolean regular){this.regular = regular;}
+
+    public void setCoolness(int coolness){this.coolness = coolness;}
 
 }
