@@ -1,6 +1,6 @@
 public class LinkedQueue<T extends Comparable<T>> implements PriorityQueue<T> {
 
-    private class Link {
+    public class Link {
         private T data;
         private Link link;
 
@@ -20,8 +20,8 @@ public class LinkedQueue<T extends Comparable<T>> implements PriorityQueue<T> {
         public void setData(T data){this.data = data;}
     }
 
-    private Link front;
-    private Link back;
+    public Link front;
+    public Link back;
 
     public LinkedQueue(){}
 
@@ -36,7 +36,7 @@ public class LinkedQueue<T extends Comparable<T>> implements PriorityQueue<T> {
     }
 
     public void enqueue(T toInsert) {
-        if (isEmpty()) {
+        if (this.isEmpty()) {
             front = new Link(toInsert);
             back = front;
         } else {
@@ -47,19 +47,31 @@ public class LinkedQueue<T extends Comparable<T>> implements PriorityQueue<T> {
                 front = new Link(toInsert,front);
             } else {
                 //get the data of what walker is pointing to
-                check = walker.getLink().getData();
-                //iterate through the links until insert is less than check
-                while (check.compareTo(toInsert) > 0) {
-                    walker.setLink(walker.getLink());
+                if (front.equals(back)) {
+                    Link insert = new Link(toInsert);
+                    front.setLink(insert);
+                    back = insert;
+                } else {
                     check = walker.getLink().getData();
+                    while (check.compareTo(toInsert) > 0 && !walker.equals(back)) {
+                        walker = walker.getLink();
+                        if (!walker.equals(back)) {
+                            check = walker.getLink().getData();
+                        }
+                    }
+                    if (walker.equals(back)) {
+                        back = new Link(toInsert);
+                        walker.setLink(back);
+                    } else {
+                        Link insert = new Link(toInsert, walker.getLink());
+                        walker.setLink(insert);
+                    }
                 }
             }
-            Link insert = new Link(toInsert, walker.getLink());
-            walker.setLink(insert);
         }
     }
 
-    public boolean isEmpty() {return back.getData() == null;}
+    public boolean isEmpty() {return front == null;}
 
     private void setFront(Link front){this.front = front;}
 
