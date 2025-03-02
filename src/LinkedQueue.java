@@ -40,13 +40,22 @@ public class LinkedQueue<T extends Comparable<T>> implements PriorityQueue<T> {
             front = new Link(toInsert);
             back = front;
         } else {
+            //Link walker = new Link(front.getData(), front.getLink());
             Link walker = front;
             T check = walker.getData();
-            while (check.compareTo(toInsert) > 0){
-                walker.setLink(walker.getLink());
+            if (check.compareTo(toInsert) <= 0) {
+                front = new Link(toInsert,front);
+            } else {
+                //get the data of what walker is pointing to
+                check = walker.getLink().getData();
+                //iterate through the links until insert is less than check
+                while (check.compareTo(toInsert) > 0) {
+                    walker.setLink(walker.getLink());
+                    check = walker.getLink().getData();
+                }
             }
-            Link insert = new Link(toInsert);
-
+            Link insert = new Link(toInsert, walker.getLink());
+            walker.setLink(insert);
         }
     }
 

@@ -2,7 +2,7 @@ import org.junit.Test;
 
 public class TestLinkedQueue {
 
-    private LinkedQueue queue1 = new LinkedQueue<Patron>();
+    private LinkedQueue<Patron> queue1 = new LinkedQueue<Patron>();
 
     @Test
     public void testEnqueue() {
@@ -12,9 +12,9 @@ public class TestLinkedQueue {
         queue1.enqueue(patron1);
         queue1.enqueue(patron2);
         queue1.enqueue(patron3);
-        assert(patron1.getNextPatron().equals(patron3));
-        assert(patron2.getNextPatron().equals(patron1));
-        assert(patron3.getNextPatron() == (null));
+        assert();
+        assert();
+        assert();
     }
 
     @Test

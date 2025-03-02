@@ -12,7 +12,16 @@ public class Patron implements Comparable<Patron> {
         this.coolness = coolness;
     }
 
-    public int compareTo(Patron patron){return this.coolness - patron.coolness;}
+    public int compareTo(Patron patron){
+        if (this.regular && !patron.regular && this.coolness == patron.coolness){
+            return 1;
+        } else if (!this.regular && patron.regular && this.coolness == patron.coolness){
+            return -1;
+        } else {
+            return this.coolness - patron.coolness;
+        }
+
+    }
 
     public String getName(){return this.name;}
 
